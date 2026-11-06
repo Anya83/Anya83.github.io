@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anya Tripathi Portfolio</title>
+<meta name="description" content="Anya Tripathi - Java Backend Engineer building Spring Boot microservices, REST APIs and monitoring platforms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000;--card:#18181b;--card2:#1f1f23;--line:#2a2a30;--text:#fff;--muted:#a1a1aa;
+  --accent:#8b5cf6;--accent2:#a78bfa;--pink:#ec4899;--gold:#f59e0b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Outfit,system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.grad{color:var(--accent2)}
+
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:linear-gradient(#000 55%,rgba(0,0,0,0))}
+.logo{font-weight:700;font-size:24px;letter-spacing:-.5px}
+.hbtns{display:flex;gap:10px}
+.pill{border-radius:999px;padding:9px 18px;font-size:12px;font-weight:600;letter-spacing:.5px;display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;font-family:inherit}
+.pill.dark{background:#27272a;color:#fff}
+.pill.light{background:#fff;color:#000}
+.pill .dot{font-size:9px}
+
+/* menu overlay */
+.menu{position:fixed;inset:0;background:#0a0a0b;z-index:60;display:flex;flex-direction:column;justify-content:center;padding:0 8vw;transform:translateY(-100%);transition:transform .6s cubic-bezier(.7,0,.2,1)}
+.menu.open{transform:none}
+.menu a{font-size:clamp(40px,8vw,88px);font-weight:700;line-height:1.15;color:transparent;-webkit-text-stroke:1px #fff;transition:color .3s}
+.menu a:hover{color:var(--accent2);-webkit-text-stroke:0}
+.menu .close{position:absolute;top:18px;right:32px}
+.menu .msoc{margin-top:40px;display:flex;gap:24px;font-size:15px;color:var(--muted)}
+.menu .msoc a{font-size:15px;-webkit-text-stroke:0;color:var(--muted);font-weight:500}
+
+/* hero */
+.hero{padding-top:110px;text-align:center}
+.hero h1{font-size:clamp(46px,10vw,124px);font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.5px #d4d4d8;letter-spacing:-1px;white-space:nowrap}
+.hero h2{font-size:clamp(22px,3vw,34px);font-weight:600;margin-top:28px}
+.hero p{color:#d4d4d8;max-width:620px;margin:16px auto 0;font-size:16px;line-height:1.6;font-weight:300}
+.hline{display:flex;align-items:center;gap:16px;margin:56px 0 0}
+.avatar{width:58px;height:58px;border-radius:50%;flex:none;background:linear-gradient(135deg,var(--accent),var(--pink));display:grid;place-items:center;font-weight:700;font-size:20px;border:2px solid #fff;overflow:hidden}
+.avatar img,.photo img{width:100%;height:100%;object-fit:cover}
+.hline .bar{flex:1;height:1px;background:#52525b}
+.soc{display:flex;gap:14px;align-items:center}
+.soc a{width:30px;height:30px;display:grid;place-items:center;opacity:.9}
+.soc a:hover{opacity:1;color:var(--accent2)}
+.soc svg{width:24px;height:24px;fill:currentColor}
+.photo{width:250px;height:280px;margin:20px 0 0 auto;margin-right:12%;border-radius:14px;border:3px solid #e4e4e7;overflow:hidden;background:linear-gradient(160deg,#27272a,#18181b);display:grid;place-items:center;transform:rotate(3deg)}
+.photo .ph{text-align:center;color:var(--muted);font-size:14px}
+.photo .ph b{display:block;font-size:72px;color:#fff;font-weight:700;line-height:1;margin-bottom:8px;background:linear-gradient(135deg,var(--accent2),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* section heads */
+section{padding:110px 0 0}
+.eyebrow{font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:9px;height:9px;border:1.5px solid var(--muted);border-radius:50%}
+.title{font-size:clamp(40px,6vw,72px);font-weight:600;line-height:1.05;margin-top:8px;letter-spacing:-1px}
+.center{text-align:center}.center .eyebrow{justify-content:center}
+
+/* what I do */
+.do{display:grid;grid-template-columns:1fr 2.1fr;gap:40px;align-items:start}
+.do .sticky{position:sticky;top:120px}
+.svc{background:var(--card);border-radius:14px;padding:30px 30px;display:grid;grid-template-columns:70px 1fr 1.3fr;gap:20px;align-items:center;margin-bottom:22px;position:relative;overflow:hidden}
+.svc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent) 40%,var(--pink))}
+.svc .n{font-size:22px;font-weight:600}
+.svc h3{font-size:22px;font-weight:600;display:flex;gap:12px;align-items:center}
+.svc h3 svg{width:22px;height:22px;flex:none;stroke:#fff;fill:none;stroke-width:1.8}
+.svc p{color:#d4d4d8;font-size:14.5px;line-height:1.6;font-weight:300}
+
+/* education stepper */
+.edu{max-width:880px;margin:44px auto 0;background:var(--card);border-radius:20px;padding:40px 44px 34px;position:relative;overflow:hidden}
+.edu .prog{position:absolute;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--pink));transition:width .5s}
+.edu .step{font-size:12px;letter-spacing:2px;color:var(--muted)}
+.edu h3{font-size:clamp(24px,3vw,32px);font-weight:600;margin:14px 0 22px;line-height:1.2}
+.edu .body{max-height:300px;overflow-y:auto;padding-right:8px}
+.edu dl dt{color:var(--gold);font-size:14px;font-weight:500;margin-top:14px}
+.edu dl dd{font-size:15px;color:#e4e4e7;line-height:1.6;margin-top:4px;font-weight:300}
+.edu ul{padding-left:18px}
+.edu .nav{display:flex;justify-content:space-between;margin-top:28px}
+.edu .nav button{border:0;border-radius:999px;padding:11px 24px;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;color:#fff}
+.edu .prev{background:#27272a}
+.edu .next{background:linear-gradient(90deg,var(--pink),var(--accent))}
+.edu button:disabled{opacity:.35;cursor:default}
+.hint{text-align:center;color:#71717a;font-size:13px;margin-top:16px}
+.fade{animation:fade .45s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* tech stack */
+.stack{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:40px}
+.chip{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);padding:12px 18px;border-radius:12px;font-size:15px;transition:transform .25s,border-color .25s}
+.chip:hover{transform:translateY(-4px);border-color:var(--accent)}
+.chip img{width:26px;height:26px}
+.stack-sub{color:var(--muted);text-align:center;margin-top:10px;font-weight:300}
+
+/* experience / projects cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:46px}
+.card{background:var(--card);border-radius:16px;padding:30px 26px;position:relative;overflow:hidden}
+.card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--pink))}
+.card h3{font-size:21px;font-weight:600}
+.card h4{font-size:16px;font-weight:500;margin-top:12px}
+.card .meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px;margin-top:6px}
+.card .meta span:last-child{text-transform:uppercase;text-align:right}
+.card ul{margin-top:18px;padding-left:16px;color:#d4d4d8;font-size:14px;line-height:1.6;font-weight:300}
+.card li{margin-bottom:10px}
+.card li::marker{color:var(--accent2)}
+.card b{font-weight:600;color:#fff}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tags span{font-size:12px;background:#27272a;padding:4px 10px;border-radius:999px;color:#d4d4d8}
+.card .gh{display:inline-flex;margin-top:18px;font-size:14px;color:var(--accent2);font-weight:500}
+.card .gh:hover{text-decoration:underline}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 2.1fr;gap:40px;padding-bottom:80px}
+.cinfo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cinfo small{font-size:12px;font-weight:600;letter-spacing:1px}
+.cinfo a{display:block;font-size:clamp(17px,2vw,22px);margin-top:6px;word-break:break-all}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+form input,form textarea{background:var(--card);border:1px solid var(--line);border-radius:10px;color:#fff;padding:15px 16px;font-family:inherit;font-size:15px;outline:none}
+form input:focus,form textarea:focus{border-color:var(--accent)}
+form .full{grid-column:1/-1}
+form textarea{min-height:150px;resize:vertical}
+form button{grid-column:1/-1;justify-self:start;background:#fff;color:#000;border:0;border-radius:999px;padding:13px 28px;font-weight:700;font-family:inherit;font-size:14px;letter-spacing:.5px;cursor:pointer}
+footer{border-top:1px solid #27272a;text-align:center;color:#71717a;font-size:14px;padding:26px 16px}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .do,.contact{grid-template-columns:1fr}
+  .do .sticky{position:static}
+  .svc{grid-template-columns:1fr;gap:10px}
+  .cards{grid-template-columns:1fr}
+  .photo{margin:20px auto 0}
+}
+@media (max-width:560px){
+  header{padding:14px 16px}
+  .wrap{padding:0 16px}
+  .hero h1{white-space:normal;-webkit-text-stroke:1px #d4d4d8}
+  .hline{margin-top:36px}
+  .photo{width:200px;height:230px}
+  .edu{padding:30px 22px}
+  .cinfo,form{grid-template-columns:1fr}
+  .pill.dark{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#top" class="logo">Anya Tripathi</a>
+  <div class="hbtns">
+    <a href="#contact" class="pill dark">LET'S TALK <span class="dot">▼</span></a>
+    <button class="pill light" id="menuBtn">MENU <span class="dot">▼</span></button>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-label="Main menu">
+  <button class="pill light close" id="closeBtn">CLOSE ✕</button>
+  <a href="#top">Home</a>
+  <a href="#services">Services</a>
+  <a href="#education">Education</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+  <div class="msoc">
+    <a href="https://www.linkedin.com/in/anya-tripathi" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/Anya83" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:anyatripathi11@gmail.com">Email</a>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero wrap">
+    <h1>Anya Tripathi</h1>
+    <h2>Java Backend Engineer</h2>
+    <p>Building scalable Spring Boot microservices, REST APIs and monitoring platforms using Java, PostgreSQL, Prometheus, Docker &amp; AWS.</p>
+    <div class="hline">
+      <!-- To use a photo: put photo.jpg next to this file and replace AT with <img src="photo.jpg" alt="Anya Tripathi"> -->
+      <div class="avatar">AT</div>
+      <div class="bar"></div>
+      <div class="soc">
+        <a href="https://www.linkedin.com/in/anya-tripathi" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <a href="https://github.com/Anya83" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.03c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg></a>
+        <a href="mailto:anyatripathi11@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-8 5-8-5V6l8 5 8-5v2.24z"/></svg></a>
+      </div>
+    </div>
+    <!-- To use a photo: replace the .ph div with <img src="photo.jpg" alt="Anya Tripathi"> -->
+    <div class="photo"><div class="ph"><b>AT</b>Noida, India</div></div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services" class="wrap">
+    <div class="do">
+      <div class="sticky reveal">
+        <div class="eyebrow">Services</div>
+        <h2 class="title">What I <span class="grad">Do</span></h2>
+      </div>
+      <div>
+        <div class="svc reveal">
+          <div class="n">01/</div>
+          <h3><svg viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>Backend Development</h3>
+          <p>I design and build REST APIs and microservices with Java and Spring Boot, using Spring Data JPA, Hibernate and Spring Security, with clean, tested and maintainable code that runs in production.</p>
+        </div>
+        <div class="svc reveal">
+          <div class="n">02/</div>
+          <h3><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Monitoring &amp; Observability</h3>
+          <p>I build monitoring platforms with Prometheus, Alertmanager, InfluxDB and Grafana, from metric exporters and alert rules to backend APIs that feed live dashboards and help teams fix issues faster.</p>
+        </div>
+        <div class="svc reveal">
+          <div class="n">03/</div>
+          <h3><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Database &amp; Performance</h3>
+          <p>I tune PostgreSQL and MySQL with targeted indexes, pagination and lean queries, and I diagnose JVM issues with heap and thread dumps to keep services fast and reliable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">Education Timeline</div>
+      <h2 class="title">My Academic <span class="grad">Journey</span></h2>
+    </div>
+    <div class="edu reveal">
+      <div class="prog" id="prog"></div>
+      <div id="eduBody"></div>
+      <div class="nav">
+        <button class="prev" id="prev">← Previous</button>
+        <button class="next" id="next">Next →</button>
+      </div>
+    </div>
+    <p class="hint">Scroll inside the card to read more, or use the buttons to explore my academic journey.</p>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="stack" class="wrap center">
+    <h2 class="title reveal">My Tech <span class="grad">Stack</span></h2>
+    <p class="stack-sub reveal">Technologies I’ve been working with recently</p>
+    <div class="stack reveal" id="stackList"></div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">Experience</div>
+      <h2 class="title">My<span class="grad">Journey</span></h2>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <h3>Product Engineer</h3>
+        <h4>Tata Consultancy Services</h4>
+        <div class="meta"><span>Noida, Uttar Pradesh</span><span>Aug 2024 – Present</span></div>
+        <ul>
+          <li>Built Java/Spring Boot REST APIs for an <b>SAP monitoring platform</b>: an SSH-based handler collects data from SAP agents via BAPI calls, sends it through a webhook and stores it for KPI dashboards.</li>
+          <li>Cut an SAP CPU-monitoring process from <b>about 30 minutes to under 2</b> with pagination, targeted PostgreSQL indexes and leaner API responses.</li>
+          <li>Built an <b>ITSM ticket monitoring application</b> with business logic for ticket status, priority, aging and KPIs, feeding operational dashboards.</li>
+          <li>Promoted from System Engineer after the first year; mentor an assigned junior engineer through code reviews.</li>
+        </ul>
+      </article>
+      <article class="card reveal">
+        <h3>System Engineer</h3>
+        <h4>Tata Consultancy Services</h4>
+        <div class="meta"><span>Noida, Uttar Pradesh</span><span>Aug 2023 – Jul 2024</span></div>
+        <ul>
+          <li>Built a <b>microservices-based monitoring solution</b> with Java, Spring Boot, Prometheus, InfluxDB and Alertmanager, integrating PostgreSQL and JMX exporters.</li>
+          <li>Helped deliver a centralised observability platform across Java, Python and .NET stacks; proactive alerting cut MTTR by <b>around 50%</b>.</li>
+          <li>Built backend APIs for a self-service monitoring portal that reduced monitoring support tickets by <b>about 30%</b>.</li>
+          <li>Built a Linux systems proof of concept whose architecture was adopted into the product roadmap.</li>
+        </ul>
+      </article>
+      <article class="card reveal">
+        <h3>Software Engineer Intern</h3>
+        <h4>GlobalLogic</h4>
+        <div class="meta"><span>Noida, Uttar Pradesh</span><span>Feb 2023 – Jun 2023</span></div>
+        <ul>
+          <li>Worked on a Java and Spring Boot client project in an Agile team.</li>
+          <li>Tuned MySQL queries for roughly <b>40% faster</b> response times.</li>
+          <li>Completed an end-of-internship assessment fixing 30+ defects in a Spring Boot codebase.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">Projects</div>
+      <h2 class="title">Things I’ve <span class="grad">Built</span></h2>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <h3>URL Shortener with Click Analytics</h3>
+        <ul>
+          <li>Redis cache-aside redirects with negative caching, and click counts buffered in Redis then bulk-written to MongoDB.</li>
+          <li>Base62 slugs, fail-open rate limiting, Swagger docs, Docker Compose and an end-to-end integration test.</li>
+        </ul>
+        <div class="tags"><span>Java 17</span><span>Spring Boot 3</span><span>MongoDB</span><span>Redis</span><span>Docker</span></div>
+        <a class="gh" href="https://github.com/Anya83/url-shortener" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+      <article class="card reveal">
+        <h3>Order Events Pipeline</h3>
+        <ul>
+          <li>Event-driven order processing with partition-key ordering and idempotent consumers.</li>
+          <li>Non-blocking retry topics with backoff and a dead-letter topic, tested with JUnit, Mockito and an embedded broker.</li>
+        </ul>
+        <div class="tags"><span>Spring Boot</span><span>Apache Kafka</span><span>JUnit</span><span>Mockito</span></div>
+        <a class="gh" href="https://github.com/Anya83/order-events-pipeline" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+      <article class="card reveal">
+        <h3>Inventory Service on Kubernetes</h3>
+        <ul>
+          <li>Multi-stage Docker build with Kubernetes Deployment, StatefulSet, HPA, Ingress and Actuator health probes.</li>
+          <li>Stateless JWT auth with Spring Security and BCrypt, Flyway migrations and optimistic locking.</li>
+        </ul>
+        <div class="tags"><span>Spring Boot</span><span>MySQL</span><span>Kubernetes</span><span>JWT</span><span>Flyway</span></div>
+        <a class="gh" href="https://github.com/Anya83/inventory-service-k8s" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="wrap">
+    <div class="contact">
+      <div class="reveal">
+        <div class="eyebrow">Contact</div>
+        <h2 class="title">Let's <span class="grad">Talk</span></h2>
+      </div>
+      <div class="reveal">
+        <div class="cinfo">
+          <div><small>EMAIL:</small><a href="mailto:anyatripathi11@gmail.com">anyatripathi11@gmail.com</a></div>
+          <div><small>WHATSAPP:</small><a href="https://wa.me/918318748650" target="_blank" rel="noopener">+91 831 874 8650</a></div>
+        </div>
+        <form id="cform">
+          <input name="name" placeholder="Name" required>
+          <input name="email" type="email" placeholder="E-Mail" required>
+          <input class="full" name="subject" placeholder="Subject">
+          <textarea class="full" name="message" placeholder="Message" required></textarea>
+          <button type="submit">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="yr">2026</span> Anya Tripathi. All Rights Reserved.</footer>
+
+<script>
+// menu
+const menu=document.getElementById('menu');
+document.getElementById('menuBtn').onclick=()=>menu.classList.add('open');
+document.getElementById('closeBtn').onclick=()=>menu.classList.remove('open');
+menu.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=()=>menu.classList.remove('open'));
+
+// education stepper
+const edu=[
+  {t:'Bachelor of Technology (B.Tech) in Computer Science & IT',d:[
+    ['Degree:','B.Tech, Computer Science and Information Technology'],
+    ['College:','Ajay Kumar Garg Engineering College (AKGEC), Ghaziabad, Uttar Pradesh'],
+    ['Duration:','2019 – 2023'],
+    ['CGPA:','8.8 / 10'],
+    ['Key Highlights:','Built a strong base in data structures and algorithms, object-oriented programming, DBMS, operating systems and computer networks, with C++ and Java as core languages.']]},
+  {t:'IEEE Research Publication',d:[
+    ['Paper:','“A Brief Survey on Metaverse: Its Concepts, Applications and Challenges”'],
+    ['Conference:','2023 3rd International Conference on Advancement in Electronics &amp; Communication Engineering (AECE), Ghaziabad, India, IEEE, pp. 470–475'],
+    ['Year:','November 2023'],
+    ['Role:','Co-author, written during B.Tech at AKGEC'],
+    ['DOI:','<a href="https://doi.org/10.1109/AECE59614.2023.10428474" target="_blank" rel="noopener" style="color:#a78bfa">10.1109/AECE59614.2023.10428474</a>']]},
+  {t:'Professional Certifications',d:[
+    ['Java &amp; Spring:','<ul><li>IBM Java Developer Professional Certificate (IBM, Feb 2026)</li><li>Generative AI for Java and Spring Developers Specialization (IBM, Sep 2026)</li></ul>'],
+    ['Cloud &amp; AI:','<ul><li>Oracle Agentic AI Certified Foundations Associate (Oracle, Sep 2026)</li><li>DevOps and AI on AWS Specialization (AWS, Sep 2026)</li><li>Google Prompting Essentials Specialization (Google, Sep 2026)</li></ul>'],
+    ['Other:','<ul><li>Data Modeling in Power BI (Microsoft, Mar 2026)</li><li>Getting Started with Git and GitHub (IBM, Feb 2026)</li><li>Introduction to Software Engineering (IBM, Jan 2026)</li></ul>']]}
+];
+let i=0;
+const body=document.getElementById('eduBody'),prev=document.getElementById('prev'),next=document.getElementById('next');
+function renderEdu(){
+  const e=edu[i];
+  body.innerHTML=`<div class="fade"><div class="step">STEP 0${i+1} / 0${edu.length}</div><h3>${e.t}</h3><div class="body"><dl>${e.d.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></div></div>`;
+  prev.disabled=i===0;next.disabled=i===edu.length-1;
+  document.getElementById('prog').style.width=((i+1)/edu.length*100)+'%';
+}
+prev.onclick=()=>{if(i>0){i--;renderEdu()}};
+next.onclick=()=>{if(i<edu.length-1){i++;renderEdu()}};
+renderEdu();
+
+// tech stack
+const D='https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/';
+const stack=[['Java','java/java-original'],['Spring Boot','spring/spring-original'],['Hibernate','hibernate/hibernate-original'],['PostgreSQL','postgresql/postgresql-original'],['MySQL','mysql/mysql-original'],['MongoDB','mongodb/mongodb-original'],['Redis','redis/redis-original'],['Apache Kafka','apachekafka/apachekafka-original'],['Docker','docker/docker-original'],['Kubernetes','kubernetes/kubernetes-original'],['AWS','amazonwebservices/amazonwebservices-plain-wordmark'],['Prometheus','prometheus/prometheus-original'],['Grafana','grafana/grafana-original'],['Jenkins','jenkins/jenkins-original'],['Maven','maven/maven-original'],['Git','git/git-original'],['Linux','linux/linux-original'],['Bash','bash/bash-original'],['TypeScript','typescript/typescript-original'],['Angular','angular/angular-original'],['Postman','postman/postman-original'],['IntelliJ IDEA','intellij/intellij-original']];
+document.getElementById('stackList').innerHTML=stack.map(([n,p])=>`<div class="chip"><img src="${D}${p}.svg" alt="" loading="lazy" onerror="this.remove()">${n}</div>`).join('');
+
+// contact form -> opens the visitor's email app
+document.getElementById('cform').onsubmit=e=>{
+  e.preventDefault();
+  const f=new FormData(e.target);
+  const sub=encodeURIComponent(f.get('subject')||'Portfolio enquiry from '+f.get('name'));
+  const msg=encodeURIComponent(f.get('message')+'\n\n'+f.get('name')+' ('+f.get('email')+')');
+  location.href=`mailto:anyatripathi11@gmail.com?subject=${sub}&body=${msg}`;
+};
+
+// reveal on scroll
+let pending=[...document.querySelectorAll('.reveal')];
+function reveal(){
+  pending=pending.filter(el=>{
+    if(el.getBoundingClientRect().top<innerHeight-40){el.classList.add('in');return false}
+    return true;
+  });
+  if(!pending.length)removeEventListener('scroll',reveal);
+}
+addEventListener('scroll',reveal,{passive:true});
+addEventListener('resize',reveal);
+reveal();
+// failsafe: never leave a section hidden
+setTimeout(()=>pending.forEach(el=>el.classList.add('in')),2500);
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
