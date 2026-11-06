@@ -56,7 +56,7 @@ header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:s
 .photo .ph b{display:block;font-size:72px;color:#fff;font-weight:700;line-height:1;margin-bottom:8px;background:linear-gradient(135deg,var(--accent2),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* section heads */
-section{padding:110px 0 0}
+section{padding:110px 0 0;scroll-margin-top:60px}
 .eyebrow{font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:8px}
 .eyebrow::before{content:"";width:9px;height:9px;border:1.5px solid var(--muted);border-radius:50%}
 .title{font-size:clamp(40px,6vw,72px);font-weight:600;line-height:1.05;margin-top:8px;letter-spacing:-1px}
@@ -147,9 +147,18 @@ footer{border-top:1px solid #27272a;text-align:center;color:#71717a;font-size:14
 @media (max-width:560px){
   header{padding:14px 16px}
   .wrap{padding:0 16px}
-  .hero h1{white-space:normal;-webkit-text-stroke:1px #d4d4d8}
-  .hline{margin-top:36px}
-  .photo{width:200px;height:230px}
+  header{background:rgba(0,0,0,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .logo{font-size:21px}
+  .hero{padding-top:96px}
+  .hero h1{white-space:nowrap;font-size:11.5vw;-webkit-text-stroke:1px #d4d4d8}
+  .hero h2{margin-top:20px}
+  .hline{margin-top:32px}
+  .photo{width:210px;height:245px;margin:28px auto 22px}
+  section{padding-top:72px}
+  .title{font-size:clamp(34px,10vw,48px)}
+  .svc{padding:24px 22px}
+  .card{padding:26px 22px}
+  .menu .close{right:16px}
   .edu{padding:30px 22px}
   .cinfo,form{grid-template-columns:1fr}
   .pill.dark{display:none}
