@@ -30,8 +30,8 @@ header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:s
 .pill .dot{font-size:9px}
 
 /* menu overlay */
-.menu{position:fixed;inset:0;background:#0a0a0b;z-index:60;display:flex;flex-direction:column;justify-content:center;padding:0 8vw;transform:translateY(-100%);transition:transform .6s cubic-bezier(.7,0,.2,1)}
-.menu.open{transform:none}
+.menu{position:fixed;inset:0;background:#0a0a0b;z-index:60;display:flex;flex-direction:column;justify-content:center;padding:0 8vw;overflow-y:auto;transform:translateY(-100%);visibility:hidden;transition:transform .6s cubic-bezier(.7,0,.2,1),visibility 0s .6s}
+.menu.open{transform:none;visibility:visible;transition:transform .6s cubic-bezier(.7,0,.2,1),visibility 0s}
 .menu a{font-size:clamp(40px,8vw,88px);font-weight:700;line-height:1.15;color:transparent;-webkit-text-stroke:1px #fff;transition:color .3s}
 .menu a:hover{color:var(--accent2);-webkit-text-stroke:0}
 .menu .close{position:absolute;top:18px;right:32px}
@@ -188,8 +188,7 @@ footer{border-top:1px solid #27272a;text-align:center;color:#71717a;font-size:14
     <h2>Java Backend Engineer</h2>
     <p>Building scalable Spring Boot microservices, REST APIs and monitoring platforms using Java, PostgreSQL, Prometheus, Docker &amp; AWS.</p>
     <div class="hline">
-      <!-- To use a photo: put photo.jpg next to this file and replace AT with <img src="photo.jpg" alt="Anya Tripathi"> -->
-      <div class="avatar">AT</div>
+      <div class="avatar"><img src="photo.jpg" alt="Anya Tripathi" style="object-position:50% 25%"></div>
       <div class="bar"></div>
       <div class="soc">
         <a href="https://www.linkedin.com/in/anya-tripathi" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
@@ -197,8 +196,7 @@ footer{border-top:1px solid #27272a;text-align:center;color:#71717a;font-size:14
         <a href="mailto:anyatripathi11@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-8 5-8-5V6l8 5 8-5v2.24z"/></svg></a>
       </div>
     </div>
-    <!-- To use a photo: replace the .ph div with <img src="photo.jpg" alt="Anya Tripathi"> -->
-    <div class="photo"><div class="ph"><b>AT</b>Noida, India</div></div>
+    <div class="photo"><img src="photo.jpg" alt="Anya Tripathi" style="object-position:50% 20%"></div>
   </div>
 
   <!-- SERVICES -->
